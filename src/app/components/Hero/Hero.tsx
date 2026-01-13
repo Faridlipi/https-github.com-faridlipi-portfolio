@@ -24,7 +24,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "circOut" }}
-                    className="text-6xl md:text-8xl font-bold tracking-tighter leading-none uppercase text-[#F2F0E6]"
+                    className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-none uppercase text-[#F2F0E6]"
                 >
                     FARID <br /> LIPI
                 </motion.h1>

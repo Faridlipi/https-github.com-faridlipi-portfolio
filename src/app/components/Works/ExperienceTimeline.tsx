@@ -185,18 +185,18 @@ export default function ExperienceTimeline() {
                     <div
                         key={index}
                         className={cn(
-                            "timeline-item w-full flex items-center justify-between",
-                            index % 2 === 0 ? "flex-row" : "flex-row-reverse" // Alternating
+                            "timeline-item w-full flex items-center justify-between gap-8 md:gap-0",
+                            index % 2 === 0 ? "flex-col md:flex-row" : "flex-col md:flex-row-reverse" // Stack on mobile
                         )}
                     >
                         {/* Content Card */}
                         <div className={cn(
-                            "w-full md:w-[42%] p-8 md:p-12",
-                            index % 2 === 0 ? "text-right" : "text-left"
+                            "w-full md:w-[42%] p-6 md:p-12",
+                            index % 2 === 0 ? "text-left md:text-right" : "text-left"
                         )}>
                             <div className={cn(
                                 "flex flex-col gap-4",
-                                index % 2 === 0 ? "items-end" : "items-start"
+                                index % 2 === 0 ? "items-start md:items-end" : "items-start"
                             )}>
                                 <div className="overflow-hidden">
                                     <span className="text-slide-up inline-block px-4 py-1 rounded-full border border-[#8b5cf6]/30 text-[#8b5cf6] font-mono text-sm tracking-wider bg-[#8b5cf6]/5">
@@ -204,7 +204,7 @@ export default function ExperienceTimeline() {
                                     </span>
                                 </div>
                                 <div className="overflow-hidden">
-                                    <h3 className="text-slide-up text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white leading-tight">
+                                    <h3 className="text-slide-up text-3xl md:text-6xl font-bold text-neutral-900 dark:text-white leading-tight">
                                         {item.company}
                                     </h3>
                                 </div>

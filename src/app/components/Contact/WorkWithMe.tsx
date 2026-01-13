@@ -8,7 +8,7 @@ import ScrollFloat from "../UI/ScrollFloat";
 
 export default function WorkWithMe() {
     return (
-        <section className="relative w-full py-32 md:py-48 px-4 flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden z-20">
+        <section className="relative w-full py-20 md:py-48 px-4 flex flex-col items-center justify-center bg-[#050505] text-white overflow-hidden z-20">
 
             {/* Header Text */}
             <div className="text-center mb-16 md:mb-24 space-y-4">
@@ -17,7 +17,7 @@ export default function WorkWithMe() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="text-neutral-400 text-lg md:text-xl uppercase tracking-widest font-light"
+                    className="text-neutral-400 text-sm md:text-xl uppercase tracking-widest font-light"
                 >
                     Have an idea?
                 </motion.h2>
@@ -28,7 +28,7 @@ export default function WorkWithMe() {
                     scrollStart='center bottom+=50%'
                     scrollEnd='bottom bottom-=40%'
                     stagger={0.04}
-                    containerClassName="text-5xl md:text-8xl font-bold tracking-tighter leading-tight"
+                    containerClassName="text-4xl md:text-5xl lg:text-8xl font-bold tracking-tighter leading-tight"
                 >
                     Let's work together
                 </ScrollFloat>
@@ -36,7 +36,7 @@ export default function WorkWithMe() {
 
             {/* Magnetic Button Area */}
             <div className="relative z-10">
-                <MagneticButton className="w-40 h-40 md:w-56 md:h-56 bg-white text-black rounded-full flex items-center justify-center text-lg md:text-xl font-medium cursor-pointer hover:scale-110 transition-transform duration-300">
+                <MagneticButton className="w-28 h-28 md:w-56 md:h-56 bg-white text-black rounded-full flex items-center justify-center text-sm md:text-xl font-medium cursor-pointer hover:scale-110 transition-transform duration-300">
                     <a href={`mailto:${PERSONAL.email}`} className="w-full h-full flex items-center justify-center">
                         Get in touch
                     </a>

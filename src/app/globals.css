@@ -61,7 +61,7 @@
     --particle-rows: 25;
     --particle-size: 2;
     --particle-color: navy;
-    /* Exact reference color */
+    /* Exact match to snippet */
     --particle-min-alpha: 0.1;
     --particle-max-alpha: 1.0;
     --seed: 200;
@@ -71,6 +71,14 @@
 
     /* Interaction Transitions */
     transition: --ring-x 3s ease, --ring-y 3s ease;
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      --ring-radius: 60;
+      --ring-thickness: 300;
+      --particle-count: 40;
+      --particle-size: 1.5;
+    }
   }
 }
 

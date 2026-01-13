@@ -16,7 +16,7 @@ export default function ParallaxStrips() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full py-48 overflow-hidden bg-background flex flex-col items-center justify-center gap-0"
+            className="relative w-full py-24 md:py-48 overflow-hidden bg-background flex flex-col items-center justify-center gap-0"
         >
             {/* Strip 1 - Rotated and Scrolling Left */}
             <motion.div
