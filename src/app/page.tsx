@@ -1,65 +1,53 @@
-import Image from "next/image";
+"use client";
+
+import SmoothScroll from "@/app/components/SmoothScroll";
+import Header from "@/app/components/Layout/Header";
+import Hero from "@/app/components/Hero/Hero";
+import Filmstrip from "@/app/components/Works/Filmstrip";
+import { Footer } from "@/app/components/Layout/Sections";
+import Cursor from "@/app/components/UI/Cursor";
+import AudioToggle from "@/app/components/UI/AudioToggle";
+import { ScrollProgress } from "@/app/components/UI/ScrollSnake";
+
+import ParallaxStrips from "@/app/components/UI/ParallaxStrips";
+import RolesMarquee from "@/app/components/Hero/RolesMarquee";
+import ScrollMarquee from "@/app/components/UI/ScrollMarquee";
+import ImageReveal from "@/app/components/UI/ImageReveal";
+import AboutMe from "@/app/components/About/AboutMe";
+import ExperienceTimeline from "@/app/components/Works/ExperienceTimeline";
+import WorkWithMe from "@/app/components/Contact/WorkWithMe";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <SmoothScroll>
+      <main className="relative min-h-screen selection:bg-primary selection:text-white">
+        <ScrollProgress />
+        <Cursor />
+        <Header />
+
+        {/* Sticky Hero Container - z-0 to stay behind content but visible */}
+        <div className="sticky top-0 left-0 w-full h-screen z-0">
+          <Hero />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Spacer with Glass Effect - z-10 to slide over */}
+        <div className="w-full h-[70vh] bg-black/5 backdrop-blur-[1px] relative z-10" />
+
+        {/* Page Content - Solid Background, z-10 to cover Hero */}
+        <div className="relative z-10 bg-background">
+          <RolesMarquee />
+          <ScrollMarquee />
+          <ImageReveal />
+          <AboutMe />
+          <ExperienceTimeline />
+          <ParallaxStrips />
+          <Filmstrip />
+          <WorkWithMe />
+          <Footer />
         </div>
+
+        <AudioToggle />
       </main>
-    </div>
+    </SmoothScroll>
   );
 }

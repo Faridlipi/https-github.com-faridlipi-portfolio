@@ -1,26 +1,149 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Houdini Ring Particles - Reference Implementation */
+@layer ring-particles {
+  @property --animation-tick {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  @property --ring-radius {
+    syntax: '<number> | auto';
+    inherits: false;
+    initial-value: auto;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @property --ring-x {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 50;
+  }
+
+  @property --ring-y {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 50;
+  }
+
+  @property --ring-interactive {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @keyframes ripple {
+    0% {
+      --animation-tick: 0;
+    }
+
+    100% {
+      --animation-tick: 1;
+    }
+  }
+
+  @keyframes ring {
+    0% {
+      --ring-radius: 150;
+    }
+
+    100% {
+      --ring-radius: 250;
+    }
+  }
+
+  #welcome {
+    --ring-radius: 100;
+    --ring-thickness: 600;
+    --particle-count: 80;
+    --particle-rows: 25;
+    --particle-size: 2;
+    --particle-color: navy;
+    /* Exact reference color */
+    --particle-min-alpha: 0.1;
+    --particle-max-alpha: 1.0;
+    --seed: 200;
+
+    background-image: paint(ring-particles);
+    animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
+
+    /* Interaction Transitions */
+    transition: --ring-x 3s ease, --ring-y 3s ease;
   }
 }
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+
+  66% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 25s ease-in-out infinite;
+}
+
+:root {
+  --background: #0A0A0F;
+  --foreground: #FAFAFA;
+}
+
 body {
-  background: var(--background);
   color: var(--foreground);
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #A855F7;
+  color: #FAFAFA;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
