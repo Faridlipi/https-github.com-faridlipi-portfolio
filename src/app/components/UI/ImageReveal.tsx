@@ -50,18 +50,18 @@ export default function ImageReveal() {
         );
 
         // 2. Internal Image Zoom
-        gsap.fromTo(
+        tl.fromTo(
             image,
             {
                 scale: 1.25,
                 filter: "grayscale(100%)",
-            },
+            } as any,
             {
                 scale: 1.0,
                 filter: "grayscale(0%)",
                 ease: "power2.out",
                 duration: 1,
-            },
+            } as any,
             "<"
         );
 
